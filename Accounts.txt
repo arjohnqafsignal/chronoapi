@@ -1,0 +1,69 @@
+Accounts
+    Attributes
+    - ID
+    - Name
+    - Company Name/Organization/Team
+    - Email
+    - Password
+
+Departments/Teams /admin/departments/
+    Attributes
+    - ID
+    - Account ID
+    - Name
+
+Positions /admin/positions/
+    Attributes
+    - ID
+    - Account ID
+    - Team ID
+
+Employees /admin/
+    - ID
+    - Account ID
+    - Position ID
+    - Name
+
+Schedules
+    - ID
+    - Account ID
+    - Employee ID
+    - Schedule Type
+    - Schedule Schema (see below)
+
+
+
+ 
+
+
+
+
+
+
+
+Standard Schedule
+    - 5 days
+        - Sat and Sun Off | Variety Off
+        - 9hrs Per day
+        - 9-6 | 8-5 | 7-4
+        - Feb 1 - Feb 15
+    - 6 days 
+        - Sune Off | Variety Off
+        - 9hrs Per day
+        - 9-6 | 8-5 | 7-4
+        -Until When | Per Month | Per Cutoff | Per Week
+
+Flexi Schedule
+    - Number of Working Hours
+    - Per Month | Week 
+
+Schedules
+    Number of days
+    Day Off
+    Working Hours
+    Range
+
+
+List of Employee -> Select Employee -> Set Schedule Settings
+
+    
