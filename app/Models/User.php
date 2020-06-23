@@ -6,14 +6,13 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Grimzy\LaravelMysqlSpatial\Eloquent\SpatialTrait;
 
 use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
 
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, SpatialTrait;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,13 +20,8 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'company_name', 'email', 'password', 'industry',
+        'first_name', 'last_name', 'email', 'password', 'user_type','location','is_new'
     ];
-
-    protected $spatialFields = [
-        'location'
-    ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
