@@ -19,6 +19,9 @@ class ResetPasswordController extends Controller
 
     protected function sendResetFailedResponse(Request $request, $response)
     {
-        return response()->json(['status' => trans($response)], 200);
+       
+        return response()->json(trans($response), 400);
+        
+        
     }
 }

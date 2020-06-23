@@ -58,6 +58,7 @@ class Handler extends ExceptionHandler
                 'message' => 'You are not authorized to access this resource.'
             ]], 403);
         }
+        
 
 
         return parent::render($request, $exception);
