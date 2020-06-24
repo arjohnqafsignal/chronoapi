@@ -24,6 +24,12 @@ abstract class BaseRepository implements IBase, ICriteria
         return $this->model->where('user_id', auth()->user()->id)->get();
     }
 
+    
+    public function findMine()
+    {
+        return $this->model->where('user_id', auth()->user()->id)->firstOrFail();
+    }
+
     public function find($id)
     {
         $result = $this->model->findOrFail($id);

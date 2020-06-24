@@ -2,15 +2,28 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\Employer;
 use Illuminate\Http\Request;
-use App\Http\Resources\UserResource;
 use App\Rules\MatchOldPassword;
+use App\Models\Company\Position;
 use App\Rules\CheckSamePassword;
+use App\Models\Company\Department;
+use Illuminate\Support\Facades\DB;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
+use App\Repositories\Company\Contracts\IEmployer;
+
 
 class SettingsController extends Controller
 {
+    protected $employers;
+    public function __construct(IEmployer $employer)
+    {
+        $this->employers = $employer;
+    }
+    
     public function updateProfile(Request $request)
     {
         $user = auth()->user();
@@ -51,5 +64,27 @@ class SettingsController extends Controller
         ]);
 
         return response()->json(['message' => 'Password Updated'], 200);
+    }
+
+    public function saveGettingStarted(Request $request)
+    {
+        $this->validate($request, [
+            'company_name' => ['required'],
+            'website' => ['required'],
+            'address' => ['required'],
+            'phone' => ['required']
+        ]);
+        $employer = $this->employers->findMine();
+
+        $employer->company_name = $request->company_name;
+        $employer->website = $request->website;
+        $employer->address = $request->address;
+        $employer->phone = $request->phone;
+
+        $employer->save();
+
+        return response()->json('Company Updated!', 200);
+        
+
     }
 }

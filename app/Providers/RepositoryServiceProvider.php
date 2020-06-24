@@ -11,6 +11,7 @@ use App\Repositories\Company\Contracts\{
     ILevel,
     IBank,
     IEmployee,
+    IEmployer,
 };
 use App\Repositories\Company\Repos\{
     DepartmentRepository,
@@ -19,6 +20,7 @@ use App\Repositories\Company\Repos\{
     LevelRepository,
     BankRepository,
     EmployeeRepository,
+    EmployerRepository,
 };
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -46,5 +48,6 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ILevel::class, LevelRepository::class);
         $this->app->bind(IBank::class, BankRepository::class);
         $this->app->bind(IEmployee::class, EmployeeRepository::class);
+        $this->app->bind(IEmployer::class, EmployerRepository::class);
     }
 }

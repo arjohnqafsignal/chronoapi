@@ -16,9 +16,9 @@ class CreateAuthsTable extends Migration
         Schema::create('auths', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->ipAddress('ip_address');
+            $table->ipAddress('ip_address')->nullable();
             $table->string('event');
-            $table->point('position');
+            $table->point('position')->nullable();
             $table->timestamps();
         });
     }
