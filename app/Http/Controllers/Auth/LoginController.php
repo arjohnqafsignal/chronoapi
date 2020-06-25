@@ -64,7 +64,7 @@ class LoginController extends Controller
 
         throw ValidationException::withMessages([
             $this->username() => 'Authentication Failed.'
-        ]);
+        ], 401);
         
     }
 

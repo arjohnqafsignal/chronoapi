@@ -56,7 +56,7 @@ class RegisterController extends Controller
         {
             DB::rollBack();
         }
-        $position = new Point($data['lat'], $data['lang']);
+        $position = new Point($data['lat'], $data['long']);
 
         Auth::create([
             'user_id' => $user->id,
